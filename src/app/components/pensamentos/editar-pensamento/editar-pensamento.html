@@ -13,6 +13,9 @@
     />
     @if(formulario.get("conteudo")?.errors?.["required"] && formulario.get("conteudo")?.touched){
     <div class="mensagem-erro">Preencha este campo.</div>
+    } @else if(formulario.get("conteudo")?.errors?.["minusculo"] &&
+    formulario.get("conteudo")?.touched){
+    <div class="mensagem-erro">Preencha este campo somente com letras minúsculas.</div>
     }@else if(formulario.get("conteudo")?.errors?.["pattern"] &&
     formulario.get("conteudo")?.touched){
     <div class="mensagem-erro">Campo não pode ficar em branco.</div>

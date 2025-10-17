@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { PensamentoService } from '../../../services/pensamento-service';
+import { minusculoValidator } from '../../../shared/minusculo-validator';
 
 @Component({
   selector: 'app-criar-pensamento',
@@ -34,6 +35,7 @@ export class CriarPensamento implements OnInit {
           Validators.required,
           Validators.minLength(5),
           Validators.pattern(/(.|\s)*\S(.|\s)*/),
+          minusculoValidator,
         ]),
       ],
       autoria: [

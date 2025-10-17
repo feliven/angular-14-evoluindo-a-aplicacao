@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InterfacePensamento } from '../interfaces/interface-pensamento';
@@ -13,8 +13,10 @@ export class PensamentoService {
 
   getPensamentos(pagina: number): Observable<InterfacePensamento[]> {
     const itensPorPagina: number = 4;
-    const enderecoAPIPaginado: string = `${this.enderecoAPI}?_page=${pagina}&_limit=${itensPorPagina}`;
-    return this.http.get<InterfacePensamento[]>(enderecoAPIPaginado);
+
+    let params = new HttpParams().set('_page', pagina).set('_limit', itensPorPagina);
+
+    return this.http.get<InterfacePensamento[]>(this.enderecoAPI, { params });
   }
 
   setPensamento(pensamento: InterfacePensamento) {

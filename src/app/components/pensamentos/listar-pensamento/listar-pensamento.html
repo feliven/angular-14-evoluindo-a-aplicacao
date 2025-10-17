@@ -11,10 +11,13 @@
     <app-pensamento [pensamento]="pensamento"></app-pensamento>
     }
   </div>
+  <app-botao-carregar-mais
+    [existemMaisPensamentos]="existemMaisPensamentos"
+    (click)="carregarMaisPensamentos()"
+  ></app-botao-carregar-mais>
   } @else {
   <div class="ff-inter sem-pensamentos">
     <p>Ainda não há pensamentos cadastrados!</p>
   </div>
-
   }
 </section>

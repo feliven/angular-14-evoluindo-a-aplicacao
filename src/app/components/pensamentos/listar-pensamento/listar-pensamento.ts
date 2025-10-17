@@ -5,16 +5,18 @@ import { RouterLink } from '@angular/router';
 import { Pensamento } from '../pensamento/pensamento';
 import { InterfacePensamento } from '../../../interfaces/interface-pensamento';
 import { PensamentoService } from '../../../services/pensamento-service';
+import { BotaoCarregarMais } from './botao-carregar-mais/botao-carregar-mais';
 
 @Component({
   selector: 'app-listar-pensamento',
-  imports: [CommonModule, RouterLink, Pensamento],
+  imports: [CommonModule, RouterLink, Pensamento, BotaoCarregarMais],
   templateUrl: './listar-pensamento.html',
   styleUrl: './listar-pensamento.css',
 })
 export class ListarPensamento implements OnInit {
   listaPensamentos: InterfacePensamento[] = [];
   paginaAtual: number = 1;
+  existemMaisPensamentos: boolean = true;
 
   constructor(private pensamentoService: PensamentoService) {}
 
@@ -22,5 +24,16 @@ export class ListarPensamento implements OnInit {
     this.pensamentoService.getPensamentos(this.paginaAtual).subscribe((listaPensamentosBackend) => {
       this.listaPensamentos = listaPensamentosBackend;
     });
+  }
+
+  carregarMaisPensamentos() {
+    this.pensamentoService
+      .getPensamentos(++this.paginaAtual)
+      .subscribe((listaPensamentosBackend) => {
+        this.listaPensamentos.push(...listaPensamentosBackend);
+        if (!listaPensamentosBackend.length) {
+          this.existemMaisPensamentos = false;
+        }
+      });
   }
 }

@@ -7,8 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PensamentoService } from '../../../services/pensamento-service';
 import { CommonModule } from '@angular/common';
+
+import { PensamentoService } from '../../../services/pensamento-service';
 
 @Component({
   selector: 'app-criar-pensamento',
@@ -25,7 +26,7 @@ export class CriarPensamento implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formulario = this.formBuilder.group({
       conteudo: [
         'digite seu conteúdo',

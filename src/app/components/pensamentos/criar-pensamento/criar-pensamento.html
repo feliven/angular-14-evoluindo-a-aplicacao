@@ -14,6 +14,9 @@
       formControlName="conteudo"
       placeholder="Digite o pensamento"
     />
+    @if(formulario.get("conteudo")?.errors && formulario.get("conteudo")?.touched){
+    <div class="mensagem-erro">Preencha o campo corretamente.</div>
+    }
     <label for="autoria">Autoria ou fonte</label>
     <input
       type="text"
@@ -23,6 +26,9 @@
       placeholder="Digite a autoria ou fonte"
       formControlName="autoria"
     />
+    @if(formulario.get("autoria")?.errors && formulario.get("autoria")?.touched){
+    <div class="mensagem-erro">Preencha o campo corretamente.</div>
+    }
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
@@ -77,6 +83,9 @@
         </div>
       </div>
     </div>
+    @if(formulario.get("modelo")?.errors && formulario.get("modelo")?.touched){
+    <div class="mensagem-erro">Escolha um dos modelos.</div>
+    }
     <div class="acoes">
       <button (click)="criarPensamento()" class="botao">Salvar</button>
       <button (click)="cancelar()" class="botao">Cancelar</button>

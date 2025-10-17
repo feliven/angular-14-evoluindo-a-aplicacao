@@ -5,12 +5,6 @@
   align-content: center;
 }
 
-.botao {
-  margin: 5px;
-  margin-top: 70px;
-  width: 200px;
-}
-
 .criar-pensamentos {
   padding: 2rem 0;
 }
@@ -139,4 +133,23 @@ input[type='radio']:checked + .custom-radio span {
   color: red;
   margin-top: -25px;
   margin-bottom: 20px;
+}
+
+.botao {
+  margin: 5px;
+  margin-top: 70px;
+  width: 200px;
+}
+
+.botao-desabilitado {
+  background: #7a7f87;
+  color: #ffffff;
+  margin: 5px;
+  margin-top: 70px;
+  width: 200px;
+  padding: 1rem;
+
+  border: 2px solid #c4c4c4;
+  border-radius: 10px;
+  transition: 0.5s ease;
 }

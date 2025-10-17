@@ -98,7 +98,13 @@
     <div class="mensagem-erro">Escolha um dos modelos.</div>
     }
     <div class="acoes">
-      <button (click)="criarPensamento()" class="botao">Salvar</button>
+      <button
+        (click)="criarPensamento()"
+        [ngClass]="habilitarBotaoSalvar()"
+        [disabled]="!formulario.valid"
+      >
+        Salvar
+      </button>
       <button (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>

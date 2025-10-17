@@ -8,10 +8,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PensamentoService } from '../../../services/pensamento-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-criar-pensamento',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './criar-pensamento.html',
   styleUrl: './criar-pensamento.css',
 })
@@ -54,6 +55,14 @@ export class CriarPensamento implements OnInit {
       console.log('criado');
     } else {
       alert('Preencha todos os campos');
+    }
+  }
+
+  habilitarBotaoSalvar() {
+    if (this.formulario.valid) {
+      return 'botao';
+    } else {
+      return 'botao-desabilitado';
     }
   }
 

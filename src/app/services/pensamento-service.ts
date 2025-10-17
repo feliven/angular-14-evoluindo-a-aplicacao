@@ -11,8 +11,10 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) {}
 
-  getPensamentos(): Observable<InterfacePensamento[]> {
-    return this.http.get<InterfacePensamento[]>(this.enderecoAPI);
+  getPensamentos(pagina: number): Observable<InterfacePensamento[]> {
+    const itensPorPagina: number = 4;
+    const enderecoAPIPaginado: string = `${this.enderecoAPI}?_page=${pagina}&_limit=${itensPorPagina}`;
+    return this.http.get<InterfacePensamento[]>(enderecoAPIPaginado);
   }
 
   setPensamento(pensamento: InterfacePensamento) {

@@ -14,11 +14,12 @@ import { PensamentoService } from '../../../services/pensamento-service';
 })
 export class ListarPensamento implements OnInit {
   listaPensamentos: InterfacePensamento[] = [];
+  paginaAtual: number = 1;
 
   constructor(private pensamentoService: PensamentoService) {}
 
   ngOnInit(): void {
-    this.pensamentoService.getPensamentos().subscribe((listaPensamentosBackend) => {
+    this.pensamentoService.getPensamentos(this.paginaAtual).subscribe((listaPensamentosBackend) => {
       this.listaPensamentos = listaPensamentosBackend;
     });
   }

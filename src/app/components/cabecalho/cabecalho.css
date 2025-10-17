@@ -12,6 +12,7 @@
 }
 
 .cabecalho .logo img {
+  cursor: pointer;
   width: 90%;
   max-width: 350px;
   margin-bottom: 2rem;

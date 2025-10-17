@@ -14,8 +14,14 @@
       formControlName="conteudo"
       placeholder="Digite o pensamento"
     />
-    @if(formulario.get("conteudo")?.errors && formulario.get("conteudo")?.touched){
-    <div class="mensagem-erro">Preencha o campo corretamente.</div>
+    @if(formulario.get("conteudo")?.errors?.["required"] && formulario.get("conteudo")?.touched){
+    <div class="mensagem-erro">Preencha este campo.</div>
+    }@else if(formulario.get("conteudo")?.errors?.["pattern"] &&
+    formulario.get("conteudo")?.touched){
+    <div class="mensagem-erro">Campo não pode ficar em branco.</div>
+    } @else if(formulario.get("conteudo")?.errors?.["minlength"] &&
+    formulario.get("conteudo")?.touched){
+    <div class="mensagem-erro">Deve conter no mínimo 5 caracteres.</div>
     }
     <label for="autoria">Autoria ou fonte</label>
     <input
@@ -26,8 +32,13 @@
       placeholder="Digite a autoria ou fonte"
       formControlName="autoria"
     />
-    @if(formulario.get("autoria")?.errors && formulario.get("autoria")?.touched){
-    <div class="mensagem-erro">Preencha o campo corretamente.</div>
+    @if(formulario.get("autoria")?.errors?.["required"] && formulario.get("autoria")?.touched){
+    <div class="mensagem-erro">Preencha este campo.</div>
+    }@else if(formulario.get("autoria")?.errors?.["pattern"] && formulario.get("autoria")?.touched){
+    <div class="mensagem-erro">Campo não pode ficar em branco.</div>
+    } @else if(formulario.get("autoria")?.errors?.["minlength"] &&
+    formulario.get("autoria")?.touched){
+    <div class="mensagem-erro">Deve conter no mínimo 3 caracteres.</div>
     }
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">

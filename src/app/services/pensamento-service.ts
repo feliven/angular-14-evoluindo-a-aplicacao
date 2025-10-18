@@ -23,7 +23,7 @@ export class PensamentoService {
     return this.http.get<InterfacePensamento[]>(this.enderecoAPI, { params });
   }
 
-  setPensamento(pensamento: InterfacePensamento) {
+  setPensamento(pensamento: InterfacePensamento): Observable<InterfacePensamento> {
     return this.http.post<InterfacePensamento>(this.enderecoAPI, pensamento);
   }
 
@@ -44,6 +44,25 @@ export class PensamentoService {
     // return this.http.put<InterfacePensamento>(url, pensamento);
 
     return this.editPensamento(pensamento);
+  }
+
+  getFavoritos(pagina: number, filtro: string): Observable<InterfacePensamento[]> {
+    const itensPorPagina: number = 4;
+
+    let params = new HttpParams()
+      .set('_page', pagina)
+      .set('_limit', itensPorPagina)
+      .set('favorito', true);
+
+    if (filtro.trim().length > 2) {
+      params = params
+        .set('q', filtro)
+        .set('_page', pagina)
+        .set('_limit', itensPorPagina)
+        .set('favorito', true);
+    }
+
+    return this.http.get<InterfacePensamento[]>(this.enderecoAPI, { params });
   }
 
   deletePensamento(id: number): Observable<InterfacePensamento> {

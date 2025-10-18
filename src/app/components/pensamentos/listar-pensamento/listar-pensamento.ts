@@ -41,6 +41,17 @@ export class ListarPensamento implements OnInit {
       });
   }
 
+  exibirFavoritos() {
+    this.paginaAtual = 1;
+    this.existemMaisPensamentos = true;
+
+    this.pensamentoService
+      .getFavoritos(this.paginaAtual, this.filtro)
+      .subscribe((listaFavoritos) => {
+        this.listaPensamentos = listaFavoritos;
+      });
+  }
+
   carregarMaisPensamentos() {
     this.pensamentoService
       .getPensamentos(++this.paginaAtual, this.filtro)

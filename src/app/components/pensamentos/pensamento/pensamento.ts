@@ -27,7 +27,7 @@ export class Pensamento {
 
   mudarFavorito(): string {
     if (this.pensamento.favorito === false) {
-      return 'botao-favorito-inativo';
-    } else return 'botao-favorito-ativo';
+      return 'inativo';
+    } else return 'ativo';
   }
 }

@@ -24,4 +24,10 @@ export class Pensamento {
     }
     return 'pensamento-p';
   }
+
+  mudarFavorito(): string {
+    if (this.pensamento.favorito === false) {
+      return 'botao-favorito-inativo';
+    } else return 'botao-favorito-ativo';
+  }
 }

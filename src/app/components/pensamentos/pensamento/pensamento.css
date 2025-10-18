@@ -51,7 +51,8 @@
 
 .botao-editar,
 .botao-excluir,
-.botao-favorito {
+.botao-favorito-ativo,
+.botao-favorito-inativo {
   border: none;
   cursor: pointer;
   margin-right: 5px;
@@ -60,14 +61,21 @@
   background-color: #f8f9fe;
 }
 
+.botao-favorito-ativo span {
+  font-variation-settings: 'FILL' 1;
+  color: palevioletred;
+}
+
 .botao-editar:hover,
 .botao-excluir:hover,
-.botao-favorito:hover {
+.botao-favorito-ativo:hover,
+.botao-favorito-inativo:hover {
   background-color: lightcyan;
 }
 
 .botao-editar span,
 .botao-excluir span,
-.botao-favorito span {
+.botao-favorito-ativo span,
+.botao-favorito-inativo span {
   font-size: 36px;
 }

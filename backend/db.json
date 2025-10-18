@@ -4,49 +4,57 @@
       "id": 1,
       "conteudo": "I love Angular",
       "autoria": "Nay",
-      "modelo": "modelo1"
+      "modelo": "modelo1",
+      "favorito": true
     },
     {
       "id": 2,
       "conteudo": "I love Angulars",
       "autoria": "Naya",
-      "modelo": "modelo2"
+      "modelo": "modelo2",
+      "favorito": false
     },
     {
       "id": 3,
       "conteudo": "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Diuretics paradis num copo é motivis de denguis. Atirei o pau no gatis, per gatis num morreus. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim.",
       "autoria": "",
-      "modelo": "modelo3"
+      "modelo": "modelo3",
+      "favorito": false
     },
     {
       "id": 4,
       "conteudo": "I love Angulares",
       "autoria": "Nay@",
-      "modelo": "modelo3"
+      "modelo": "modelo3",
+      "favorito": false
     },
     {
       "id": 5,
       "conteudo": "Passo informações para o componente filho",
       "autoria": "Componente pai",
-      "modelo": "modelo1"
+      "modelo": "modelo1",
+      "favorito": false
     },
     {
       "id": 6,
       "conteudo": "Minha propriedade é decorada com @Input()",
       "autoria": "Componente filho",
-      "modelo": "modelo2"
+      "modelo": "modelo2",
+      "favorito": false
     },
     {
       "conteudo": "Aprendendo Angular",
       "autoria": "Dev",
       "modelo": "modelo1",
-      "id": 7
+      "id": 7,
+      "favorito": false
     },
     {
       "conteudo": "Exemplo de conteúdo",
       "autoria": "Pessoa autora",
       "modelo": "modelo1",
-      "id": 8
+      "id": 8,
+      "favorito": false
     }
   ]
 }

@@ -22,6 +22,11 @@ export class ListarPensamento implements OnInit {
   favorito: boolean = false;
   listaFavoritos: InterfacePensamento[] = [];
 
+  private readonly TITULO_MURAL: string = 'Meu Mural';
+  private readonly TITULO_FAVORITOS: string = 'Meus Favoritos';
+
+  titulo: string = this.TITULO_MURAL;
+
   constructor(private pensamentoService: PensamentoService) {}
 
   ngOnInit(): void {
@@ -56,12 +61,16 @@ export class ListarPensamento implements OnInit {
   }
 
   exibirFavoritos(): void {
+    this.titulo = this.TITULO_FAVORITOS;
+
     this.resetarPaginacao();
     this.favorito = true;
     this.carregarPensamentos();
   }
 
   exibirMuralCompleto(): void {
+    this.titulo = this.TITULO_MURAL;
+
     this.resetarPaginacao();
     this.filtro = '';
     this.favorito = false;

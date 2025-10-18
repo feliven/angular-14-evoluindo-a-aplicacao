@@ -54,7 +54,20 @@
 .botao-favorito {
   border: none;
   cursor: pointer;
-  font-family: 'material-symbols-outlined';
   margin-right: 5px;
   margin-top: 15px;
+  font-family: 'material-symbols-outlined';
+  background-color: #f8f9fe;
+}
+
+.botao-editar:hover,
+.botao-excluir:hover,
+.botao-favorito:hover {
+  background-color: lightcyan;
+}
+
+.botao-editar span,
+.botao-excluir span,
+.botao-favorito span {
+  font-size: 36px;
 }

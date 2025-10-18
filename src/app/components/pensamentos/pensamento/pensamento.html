@@ -5,11 +5,14 @@
     <b>{{ pensamento.autoria }}</b>
   </p>
   <div class="acoes">
+    <button class="botao-favorito">
+      <span class="material-symbols-outlined">heart_smile</span>
+    </button>
     <button class="botao-editar" routerLink="/pensamentos/editarPensamento/{{ pensamento.id }}">
-      <img src="/icone-editar.png" alt="Ícone de editar" />
+      <span class="material-symbols-outlined">edit_document</span>
     </button>
     <button class="botao-excluir" routerLink="/pensamentos/excluirPensamento/{{ pensamento.id }}">
-      <img src="/icone-excluir.png" alt="Ícone de excluir" />
+      <span class="material-symbols-outlined">delete</span>
     </button>
   </div>
 </div>

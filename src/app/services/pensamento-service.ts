@@ -37,6 +37,15 @@ export class PensamentoService {
     return this.http.put<InterfacePensamento>(url, pensamento);
   }
 
+  mudarFavorito(pensamento: InterfacePensamento): Observable<InterfacePensamento> {
+    pensamento.favorito = !pensamento.favorito;
+
+    // const url = `${this.enderecoAPI}/${pensamento.id}`;
+    // return this.http.put<InterfacePensamento>(url, pensamento);
+
+    return this.editPensamento(pensamento);
+  }
+
   deletePensamento(id: number): Observable<InterfacePensamento> {
     const url = `${this.enderecoAPI}/${id}`;
     return this.http.delete<InterfacePensamento>(url);

@@ -5,14 +5,14 @@
       "conteudo": "I love Angular",
       "autoria": "Nay",
       "modelo": "modelo1",
-      "favorito": true
+      "favorito": false
     },
     {
       "id": 2,
       "conteudo": "I love Angulars",
       "autoria": "Naya",
       "modelo": "modelo2",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": 3,

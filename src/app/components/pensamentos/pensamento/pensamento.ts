@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { InterfacePensamento } from '../../../interfaces/interface-pensamento';
 import { RouterLink } from '@angular/router';
+import { PensamentoService } from '../../../services/pensamento-service';
 
 @Component({
   selector: 'app-pensamento',
@@ -18,6 +19,8 @@ export class Pensamento {
     favorito: false,
   };
 
+  constructor(private pensamentoService: PensamentoService) {}
+
   larguraPensamento(): string {
     if (this.pensamento.conteudo.length >= 256) {
       return 'pensamento-g';
@@ -29,5 +32,9 @@ export class Pensamento {
     if (this.pensamento.favorito === false) {
       return 'inativo';
     } else return 'ativo';
+  }
+
+  atualizarFavorito() {
+    this.pensamentoService.mudarFavorito(this.pensamento).subscribe();
   }
 }

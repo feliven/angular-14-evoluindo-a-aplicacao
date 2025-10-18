@@ -49,6 +49,7 @@ export class EditarPensamento implements OnInit {
         ]),
       ],
       modelo: ['', Validators.required],
+      favorito: false,
     });
 
     const idComoString = this.activatedRoute.snapshot.paramMap.get('id');
@@ -60,6 +61,7 @@ export class EditarPensamento implements OnInit {
         conteudo: pensamento.conteudo,
         autoria: pensamento.autoria,
         modelo: pensamento.modelo,
+        favorito: pensamento.favorito,
       });
     });
   }

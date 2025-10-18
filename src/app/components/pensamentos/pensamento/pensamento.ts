@@ -15,6 +15,7 @@ export class Pensamento {
     conteudo: '',
     autoria: '',
     modelo: '',
+    favorito: false,
   };
 
   larguraPensamento(): string {

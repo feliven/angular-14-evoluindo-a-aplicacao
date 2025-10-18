@@ -3,4 +3,5 @@ export interface InterfacePensamento {
   conteudo: string;
   autoria: string;
   modelo: string;
+  favorito: boolean;
 }

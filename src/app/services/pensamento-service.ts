@@ -11,10 +11,14 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) {}
 
-  getPensamentos(pagina: number): Observable<InterfacePensamento[]> {
+  getPensamentos(pagina: number, filtro: string): Observable<InterfacePensamento[]> {
     const itensPorPagina: number = 4;
 
     let params = new HttpParams().set('_page', pagina).set('_limit', itensPorPagina);
+
+    if (filtro.trim().length > 2) {
+      params = params.set('q', filtro).set('_page', pagina).set('_limit', itensPorPagina);
+    }
 
     return this.http.get<InterfacePensamento[]>(this.enderecoAPI, { params });
   }

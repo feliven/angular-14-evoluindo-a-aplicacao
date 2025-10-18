@@ -23,14 +23,27 @@ export class ListarPensamento implements OnInit {
   constructor(private pensamentoService: PensamentoService) {}
 
   ngOnInit(): void {
-    this.pensamentoService.getPensamentos(this.paginaAtual).subscribe((listaPensamentosBackend) => {
-      this.listaPensamentos = listaPensamentosBackend;
-    });
+    this.pensamentoService
+      .getPensamentos(this.paginaAtual, this.filtro)
+      .subscribe((listaPensamentosBackend) => {
+        this.listaPensamentos = listaPensamentosBackend;
+      });
+  }
+
+  pesquisarPensamentos() {
+    this.paginaAtual = 1;
+    this.existemMaisPensamentos = true;
+
+    this.pensamentoService
+      .getPensamentos(this.paginaAtual, this.filtro)
+      .subscribe((listaPensamentos) => {
+        this.listaPensamentos = listaPensamentos;
+      });
   }
 
   carregarMaisPensamentos() {
     this.pensamentoService
-      .getPensamentos(++this.paginaAtual)
+      .getPensamentos(++this.paginaAtual, this.filtro)
       .subscribe((listaPensamentosBackend) => {
         this.listaPensamentos.push(...listaPensamentosBackend);
         if (!listaPensamentosBackend.length) {

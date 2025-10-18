@@ -33,6 +33,9 @@ export class ListarPensamento implements OnInit {
       .getPensamentos(this.paginaAtual, this.filtro, this.favorito || undefined)
       .subscribe((listaPensamentosBackend) => {
         this.listaPensamentos = listaPensamentosBackend;
+        if (this.favorito) {
+          this.listaFavoritos = listaPensamentosBackend;
+        }
       });
   }
 
@@ -55,12 +58,7 @@ export class ListarPensamento implements OnInit {
   exibirFavoritos(): void {
     this.resetarPaginacao();
     this.favorito = true;
-    this.pensamentoService
-      .getPensamentos(this.paginaAtual, this.filtro, this.favorito || undefined)
-      .subscribe((listaPensamentosBackend) => {
-        this.listaPensamentos = listaPensamentosBackend;
-        this.listaFavoritos = listaPensamentosBackend;
-      });
+    this.carregarPensamentos();
   }
 
   exibirMuralCompleto(): void {

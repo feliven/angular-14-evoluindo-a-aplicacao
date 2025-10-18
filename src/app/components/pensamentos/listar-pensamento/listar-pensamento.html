@@ -23,7 +23,7 @@
 
   <div class="mural">
     @for (pensamento of listaPensamentos; track pensamento.id) {
-    <app-pensamento [pensamento]="pensamento"></app-pensamento>
+    <app-pensamento [pensamento]="pensamento" [listaFavoritos]="listaFavoritos"></app-pensamento>
     }
   </div>
   <app-botao-carregar-mais

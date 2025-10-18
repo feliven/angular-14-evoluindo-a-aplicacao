@@ -20,6 +20,7 @@ export class ListarPensamento implements OnInit {
   existemMaisPensamentos: boolean = true;
   filtro: string = '';
   favorito: boolean = false;
+  listaFavoritos: InterfacePensamento[] = [];
 
   constructor(private pensamentoService: PensamentoService) {}
 
@@ -54,7 +55,12 @@ export class ListarPensamento implements OnInit {
   exibirFavoritos(): void {
     this.resetarPaginacao();
     this.favorito = true;
-    this.carregarPensamentos();
+    this.pensamentoService
+      .getPensamentos(this.paginaAtual, this.filtro, this.favorito || undefined)
+      .subscribe((listaPensamentosBackend) => {
+        this.listaPensamentos = listaPensamentosBackend;
+        this.listaFavoritos = listaPensamentosBackend;
+      });
   }
 
   exibirMuralCompleto(): void {

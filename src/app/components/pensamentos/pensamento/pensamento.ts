@@ -1,7 +1,8 @@
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { InterfacePensamento } from '../../../interfaces/interface-pensamento';
 import { RouterLink } from '@angular/router';
+
+import { InterfacePensamento } from '../../../interfaces/interface-pensamento';
 import { PensamentoService } from '../../../services/pensamento-service';
 
 @Component({
@@ -19,6 +20,8 @@ export class Pensamento {
     favorito: false,
   };
 
+  @Input() listaFavoritos: InterfacePensamento[] = [];
+
   constructor(private pensamentoService: PensamentoService) {}
 
   larguraPensamento(): string {
@@ -35,6 +38,8 @@ export class Pensamento {
   }
 
   atualizarFavorito() {
-    this.pensamentoService.mudarFavorito(this.pensamento).subscribe();
+    this.pensamentoService.mudarFavorito(this.pensamento).subscribe(() => {
+      this.listaFavoritos.splice(this.listaFavoritos.indexOf(this.pensamento), 1);
+    });
   }
 }

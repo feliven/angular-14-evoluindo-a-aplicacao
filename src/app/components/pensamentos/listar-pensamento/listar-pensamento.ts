@@ -24,60 +24,48 @@ export class ListarPensamento implements OnInit {
   constructor(private pensamentoService: PensamentoService) {}
 
   ngOnInit(): void {
+    this.carregarPensamentos();
+  }
+
+  private carregarPensamentos(): void {
     this.pensamentoService
-      .getPensamentos(this.paginaAtual, this.filtro, undefined)
+      .getPensamentos(this.paginaAtual, this.filtro, this.favorito || undefined)
       .subscribe((listaPensamentosBackend) => {
         this.listaPensamentos = listaPensamentosBackend;
       });
   }
 
-  pesquisarPensamentos() {
-    this.paginaAtual = 1;
-    this.existemMaisPensamentos = true;
-
-    if (this.favorito === true) {
-      this.pensamentoService
-        .getPensamentos(this.paginaAtual, this.filtro, this.favorito)
-        .subscribe((listaPensamentos) => {
-          this.listaPensamentos = listaPensamentos;
-        });
-    } else {
-      this.pensamentoService
-        .getPensamentos(this.paginaAtual, this.filtro, undefined)
-        .subscribe((listaPensamentos) => {
-          this.listaPensamentos = listaPensamentos;
-        });
-    }
-  }
-
-  exibirMuralCompleto() {
-    this.paginaAtual = 1;
-    this.existemMaisPensamentos = true;
-    this.filtro = '';
-
-    this.ngOnInit();
-  }
-
-  exibirFavoritos() {
-    this.paginaAtual = 1;
-    this.existemMaisPensamentos = true;
-    this.favorito = true;
-
+  carregarMaisPensamentos(): void {
     this.pensamentoService
-      .getPensamentos(this.paginaAtual, this.filtro, this.favorito)
-      .subscribe((listaFavoritos) => {
-        this.listaPensamentos = listaFavoritos;
-      });
-  }
-
-  carregarMaisPensamentos() {
-    this.pensamentoService
-      .getPensamentos(++this.paginaAtual, this.filtro, this.favorito)
+      .getPensamentos(++this.paginaAtual, this.filtro, this.favorito || undefined)
       .subscribe((listaPensamentosBackend) => {
         this.listaPensamentos.push(...listaPensamentosBackend);
         if (!listaPensamentosBackend.length) {
           this.existemMaisPensamentos = false;
         }
       });
+  }
+
+  pesquisarPensamentos(): void {
+    this.resetarPaginacao();
+    this.carregarPensamentos();
+  }
+
+  exibirFavoritos(): void {
+    this.resetarPaginacao();
+    this.favorito = true;
+    this.carregarPensamentos();
+  }
+
+  exibirMuralCompleto(): void {
+    this.resetarPaginacao();
+    this.filtro = '';
+    this.favorito = false;
+    this.carregarPensamentos();
+  }
+
+  private resetarPaginacao(): void {
+    this.paginaAtual = 1;
+    this.existemMaisPensamentos = true;
   }
 }

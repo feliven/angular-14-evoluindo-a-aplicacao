@@ -8,35 +8,31 @@ import { InterfacePensamento } from '../interfaces/interface-pensamento';
 })
 export class PensamentoService {
   private readonly enderecoAPI = 'http://localhost:3000/pensamentos';
+  private readonly itensPorPagina = 4;
 
   constructor(private http: HttpClient) {}
+
+  private criarParamsBasicos(pagina: number): HttpParams {
+    return new HttpParams().set('_page', pagina).set('_limit', this.itensPorPagina);
+  }
 
   getPensamentos(
     pagina: number,
     filtro: string,
     favorito?: boolean
   ): Observable<InterfacePensamento[]> {
-    const itensPorPagina: number = 4;
-
-    let params = new HttpParams().set('_page', pagina).set('_limit', itensPorPagina);
+    let params = this.criarParamsBasicos(pagina);
 
     if (favorito) {
       params = params.set('favorito', true);
     }
 
     if (filtro.trim().length > 2) {
-      params = params.set('q', filtro).set('_page', pagina).set('_limit', itensPorPagina);
-      if (favorito) {
-        params = params.set('favorito', true);
-      }
+      params = params.set('q', filtro);
     }
 
     return this.http.get<InterfacePensamento[]>(this.enderecoAPI, { params });
   }
-
-  // getFavoritos(pagina: number, filtro: string): Observable<InterfacePensamento[]> {
-  //   return this.getPensamentos(pagina, filtro, true);
-  // }
 
   setPensamento(pensamento: InterfacePensamento): Observable<InterfacePensamento> {
     return this.http.post<InterfacePensamento>(this.enderecoAPI, pensamento);

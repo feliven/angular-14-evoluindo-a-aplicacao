@@ -92,4 +92,5 @@ input[type='search']::-webkit-search-cancel-button {
 
 .buscar-pensamentos span {
   font-size: 36px;
+  color: rgb(35, 68, 124);
 }
